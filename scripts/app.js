@@ -10,6 +10,7 @@ function createGithubProfileCard(rootElmSelector){
     fetch(api_url).then(data=>data.json()).then((data)=>{
         let imageElm = profileCard.querySelector('.bin-github-profile-image');
         let nameElm = profileCard.querySelector('.bin-github-name');
+        let bioElm = profileCard.querySelector('.bin-github-bio');
         let followerElm = profileCard.querySelector('.bin-github-follower-count');
         let repoElm = profileCard.querySelector('.bin-github-repo-count');
         let followingElm = profileCard.querySelector('.bin-github-following-count');
@@ -39,6 +40,7 @@ function createGithubProfileCard(rootElmSelector){
         followerElm.innerHTML += followers;
         followingElm.innerHTML += following;
         repoElm.innerHTML += repos;
+        bioElm.innerHTML = bio;
     });
 
 

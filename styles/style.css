@@ -35,6 +35,16 @@ body{
     position: relative;
     top: -20px;
 }
+
+.bin-github-bio{
+    width: 100%;
+    text-align: center;
+    margin: 0 auto;
+    padding: 0;
+    color:grey;
+    font-size:14px;
+}
+
 .bin-github-profile-metadata span{
     padding: 30px;
     width: 40px;
