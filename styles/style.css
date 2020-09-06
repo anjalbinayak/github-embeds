@@ -1,6 +1,6 @@
 *{
     font-family: sans-serif;
-    color:rgb(87, 74, 74);
+   color:#e5e5e5;
 }
 body{
     background:rgb(148, 142, 142);
@@ -10,7 +10,7 @@ body{
 .bin-github-profile-card{
     height:300px;
     width:300px;
-    background:white;
+    background:#2d4059;
     border-radius: 10px;
     position: absolute;
 }
@@ -63,10 +63,11 @@ body{
 .bin-github-social-links{
     position: absolute;
     bottom:0;
-    background:rgb(207, 207, 207);
+    background:#ea5455;
     width:100%;
     height:30px;
-    border-radius: 10px;
+    border-radius-bottom-left: 10px;
+    border-radius-bottom-right: 10px;
 }
 
 .bin-github-social-links span{
