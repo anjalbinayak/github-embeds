@@ -1,68 +1,69 @@
 const PROFILE_API = "https://api.github.com/users/";
 
+function createGithubProfileCard(rootElmSelector) {
+  let profileCard = document.querySelector(rootElmSelector);
+  if (!profileCard) return;
+  let username = profileCard.getAttribute("data-username") || "anjalbinayak";
 
-function createGithubProfileCard(rootElmSelector){
-    let profileCard = document.querySelector(rootElmSelector);
-    if(!profileCard) return;
-    let username = profileCard.getAttribute('data-username') || "anjalbinayak"; 
+  let api_url = PROFILE_API + username;
+  fetch(api_url)
+    .then((data) => data.json())
+    .then((data) => {
+      let imageElm = profileCard.querySelector(".bin-github-profile-image");
+      let nameElm = profileCard.querySelector(".bin-github-name");
+      let bioElm = profileCard.querySelector(".bin-github-bio");
+      let followerElm = profileCard.querySelector(".bin-github-follower-count");
+      let repoElm = profileCard.querySelector(".bin-github-repo-count");
+      let followingElm = profileCard.querySelector(
+        ".bin-github-following-count"
+      );
 
-    let api_url = PROFILE_API + username;
-    fetch(api_url).then(data=>data.json()).then((data)=>{
-        let imageElm = profileCard.querySelector('.bin-github-profile-image');
-        let nameElm = profileCard.querySelector('.bin-github-name');
-        let bioElm = profileCard.querySelector('.bin-github-bio');
-        let followerElm = profileCard.querySelector('.bin-github-follower-count');
-        let repoElm = profileCard.querySelector('.bin-github-repo-count');
-        let followingElm = profileCard.querySelector('.bin-github-following-count');
+      let twitterElm = profileCard.querySelector(".bin-github-twitter-link");
+      let blogElm = profileCard.querySelector(".bin-github-blog-link");
 
-        let twitterElm = profileCard.querySelector('.bin-github-twitter-link');
-        let blogElm = profileCard.querySelector('.bin-github-blog-link');
+      let avatar = data.avatar_url;
+      let profile_url = data.html_url;
+      let bio = data.bio;
+      let followers = data.followers;
+      let following = data.following;
+      let name = data.name;
+      let repos = data.public_repos;
+      let blog = data.blog;
+      let twitter = "https://twitter.com/" + data.twitter_username;
 
-        
-        let avatar = data.avatar_url;
-        let profile_url = data.html_url;
-        let bio = data.bio;
-        let followers = data.followers;
-        let following = data.following;
-        let name = data.name;
-        let repos = data.public_repos;
-        let blog = data.blog;
-        let twitter = "https://twitter.com/"+ data.twitter_username;
+      if (!blog) blogElm.style.display = "none";
+      if (!data.twitter_username) twitterElm.style.display = "none";
+      addLink(imageElm, profile_url);
+      addLink(twitterElm, twitter);
+      addLink(blogElm, blog);
 
-        if(!blog) blogElm.style.display="none";
-        if(!data.twitter_username) twitterElm.style.display="none";
-        addLink(imageElm, profile_url);
-        addLink(twitterElm , twitter);
-        addLink(blogElm, blog);
-
-        imageElm.src=avatar;
-        nameElm.innerHTML = name;
-        followerElm.innerHTML += followers;
-        followingElm.innerHTML += following;
-        repoElm.innerHTML += repos;
-        bioElm.innerHTML = bio;
+      imageElm.src = avatar;
+      nameElm.innerHTML = name;
+      followerElm.innerHTML +=
+        followers > 1000 ? Math.fround(followers / 1000).toFixed(1) + "k" : followers;
+      followingElm.innerHTML +=
+        following > 1000 ? Math.fround(following / 1000).toFixed(1) + "k" : following;
+      repoElm.innerHTML += repos;
+      bioElm.innerHTML = bio;
     });
 
-
-
-
-
-
-    console.log(api_url);
-    console.log(username);
-    console.log(profileCard);
+  console.log(api_url);
+  console.log(username);
+  console.log(profileCard);
 }
 
-function addLink(elm, link){
-    elm.addEventListener('click', function(){
-        console.log(link);
-        window.open(link)
-    });
+function addLink(elm, link) {
+  elm.addEventListener("click", function () {
+    console.log(link);
+    window.open(link);
+  });
 }
 
+function random(min, max){
+    return Math.floor((Math.random() * max) + min);
+}
 
-createGithubProfileCard('.bin-github-profile-card');
-
+createGithubProfileCard(".bin-github-profile-card");
 
 // bin-github-profile-image
 // bin-github-username
