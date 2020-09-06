@@ -65,6 +65,9 @@ body{
     text-align:center;
 }
 
+.expand{
+    transition:0.3s;
+}
 .expand:hover{
-    transform:translate(10,10);
+    transform:scale(1.2);
 }
