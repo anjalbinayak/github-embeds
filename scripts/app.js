@@ -36,6 +36,7 @@ function createGithubProfileCard(rootElmSelector) {
       addLink(imageElm, profile_url);
       addLink(twitterElm, twitter);
       addLink(blogElm, blog);
+      addColorGradient(nameElm);
 
       imageElm.src = avatar;
       nameElm.innerHTML = name;
@@ -57,6 +58,10 @@ function addLink(elm, link) {
     console.log(link);
     window.open(link);
   });
+}
+
+function addColorGradient(elm){
+    
 }
 
 function random(min, max){
