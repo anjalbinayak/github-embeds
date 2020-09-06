@@ -68,7 +68,7 @@ function random(min, max){
     return Math.floor((Math.random() * max) + min);
 }
 
-createGithubProfileCard(".bin-github-profile-card");
+
 
 // bin-github-profile-image
 // bin-github-username
