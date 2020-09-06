@@ -28,6 +28,8 @@ function createGithubProfileCard(rootElmSelector){
         let blog = data.blog;
         let twitter = "https://twitter.com/"+ data.twitter_username;
 
+        if(!blog) blogElm.style.display="none";
+        if(!data.twitter_username) twitterElm.style.display="none";
         addLink(imageElm, profile_url);
         addLink(twitterElm , twitter);
         addLink(blogElm, blog);
